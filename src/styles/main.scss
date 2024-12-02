@@ -1,7 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Oswald:wght@200..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
-$oswald: Oswald;
-$roboto: Roboto;
+$oswald: Oswald, sans-serif;
+$roboto: Roboto, sans-serif;
+$anton: Anton, sans-serif;
+$bebas: Bebas Neue, sans-serif;
 
 * {
     padding: 0;
@@ -13,10 +15,7 @@ $roboto: Roboto;
 
 body {
     background-color: rgba(248, 174, 193, 0.789);
-}
-
-span {
-    color: #f5448e;
+    overflow-x: hidden;
 }
 
 .hero {
@@ -35,7 +34,7 @@ span {
     position: relative;
 
     .overlay {
-        background: (rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
+        background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
         z-index: 1;
         width: 100vw;
         height: 550px;
@@ -54,25 +53,35 @@ span {
             text-align: center;
             margin-top: 100px;
             z-index: 2;
+
             h1 {
                 font-family: $oswald;
-                font-size: 72px;
-                color: #f5448e;
+                font-size: 68px;
+                color: #ffaed0//#f990b3;
             }
 
             h3 {
                 font-family: $oswald;
-                font-size: 24px;
-                color: #f5448e;
+                font-size: 20px;
+                color: #ffffff;
             }
 
             .time {
                 margin-top: 40px;
+                
+                span {
+                    color: #ffffff;
+                }
+
+                #countdown {
+                    font-family: $bebas;
+                    font-size: 80px;
+                }
             }
 
         }
 
-        .cte {
+        .cta {
             display: flex;
             align-items: center;
             justify-content: space-around;
@@ -88,7 +97,7 @@ span {
                 text-align: left;
 
                 p {
-                    padding-right: 24px;
+                    padding: 0px 24px;
                     color: #f5448e;
                 }
             }
@@ -247,7 +256,7 @@ span {
 
         img {
             width: 100%;
-            opacity: 0.6;
+            //opacity: 0.4;
             z-index: 1;
             
         }
@@ -256,26 +265,29 @@ span {
 
 .events {
 
-    padding: 24px 0;
-
-    .imgs {
+    .events_info {
         display: flex;
         align-items: center;
         justify-content: center;
-        padding-bottom: 24px;
+        padding: 12px 12px;
+        background-image: linear-gradient(to left bottom, rgb(252, 184, 195), rgb(250, 153, 174));
 
         div {
-            max-width: 600px;
+            max-width: 40%;
             max-height: 600px;
             overflow: hidden;
             object-fit: contain;
-            padding: 0 24px;
+            padding: 0 12px;
             
         
             img {
                 width: 100%;
                 border-radius: 8px;
             }
+        }
+
+        h2 {
+            margin-bottom: 12px;
         }
 
         p {
@@ -286,7 +298,6 @@ span {
     }
 
 }
-
 
 @keyframes moveInBottom {
     0% {
@@ -299,3 +310,123 @@ span {
         transform: translateY(0px);
     }
 }
+
+@media (max-width: 768px) {
+    .hero {
+        height: 400px;
+        overflow-x: hidden;
+
+        .title {
+            margin-top: 0px !important;
+
+            h1 {
+                font-size: 48px;
+            }
+        }
+
+        .cta {
+            width: 80% !important;
+            padding: 12px 16px;
+        }
+    }
+
+    .events {
+        overflow-x: hidden;
+
+        .img {
+            flex-direction: column;
+        }
+    }
+    
+}
+
+@media (max-width: 480px) {
+
+    .hero {
+        height: 400px;
+        overflow-x: hidden; 
+
+        .container {
+            justify-content: center;
+            .title {
+
+                margin-bottom: 20px;
+
+                h1 {
+                    font-size: 36px; 
+                }
+
+                h3 {
+                    font-size: 16px;
+                }
+
+                .time {
+                    margin-top: 20px;
+
+                    h3, span {
+                        font-size: 14px;
+                    }
+                }
+            }
+
+            .cta {
+                width: 90%; 
+                padding: 12px 16px; 
+                flex-direction: column;
+    
+                .info {
+                    flex-direction: column;
+                
+                    p {
+                        padding: 8px 0;
+                    }
+                }
+                
+                .bnt {
+                    width: 100%;
+
+                    button {
+                        padding: 8px 24px;
+                        font-size: 14px;
+                        width: 100%;
+                        
+                    }
+                }
+            }
+        }
+
+    }
+
+    .events {
+        padding: 16px 8px;
+        overflow-x: hidden;
+        
+        .events_info {
+            flex-direction: column; 
+            div {
+                max-width: 100%; 
+                padding: 8px 0; 
+            }
+
+            p {
+                max-width: 100%;
+                font-size: 14px; 
+                padding-bottom: 8px;
+            }
+        }
+
+        p {
+            order: 2;
+        }
+
+        img {
+            order: 1;
+        }
+    }
+
+    body {
+        font-size: 14px;
+    }
+}
+
+
